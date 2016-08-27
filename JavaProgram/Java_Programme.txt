@@ -1,0 +1,714 @@
+1.*String sort
+
+class aaa
+{
+public static String[] Sort(String x[])
+{
+String g;
+for(int i=0;i<x.length;i++)
+{
+for(int j=i+1;j<x.length;j++)
+{
+if(x[i].compareTo(x[j])>0)
+{
+g=x[j];
+x[j]=x[i];
+x[i]=g;
+}
+}
+}
+return x;
+}
+public static void main(String g[])
+{
+String h[]={"Rahul","Amit","Punit","Keshav","Durgesh"};
+String f[]=aaa.Sort(h);
+for(int i=0;i<f.length;i++)
+{
+System.out.println(f[i]);
+}
+}
+}
+
+------------------------------------------------------------------------------------------------
+2.*replace,merge,sort
+
+import java.util.*;
+class aaa
+{
+public static int[] sort(String a,String b)
+{
+a=a.replace("|"," ");
+b=b.replace("|"," ");
+String f[]=a.split(" ");
+String h[]=b.split(" ");
+int z[]=new int[f.length+h.length];
+int k=0;
+for(int i=0;i<f.length;i++)
+{
+z[k]=Integer.parseInt(f[i]);
+k++;
+}
+for(int i=0;i<h.length;i++)
+{
+z[k]=Integer.parseInt(h[i]);
+k++;
+}
+Arrays.sort(z);
+return z;
+
+}
+public static void main(String gg[])
+{
+String a="1|7|5|4";
+String b="8|9|1|3";
+int q[];
+q=aaa.sort(a,b);
+for(int i=0;i<q.length;i++)
+{
+System.out.println(q[i]);
+}
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+3.pallandrom
+
+class aaa
+{
+public static int pall(String g)
+{
+int x=g.length()-1;
+int z=1;
+for(int i=0;i<g.length();i++)
+{
+if(g.charAt(i)!=g.charAt(x))
+{
+z=0;
+break;
+}
+x--;
+}
+if(z==0)
+{
+System.out.println("not pall");
+}
+else
+{
+System.out.println("pall");
+}
+return z; 
+}
+public static void main(String gg[])
+{
+String g="iiabbaaii";
+aaa.pall(g);
+}
+}
+
+---------------------------------------------------------------
+
+4. String se sum compute
+
+class aaa
+{
+public static void main(String gg[])
+{
+String g=" 10 dknj abfj";
+String f[]=g.split(" ");
+int sum=0;
+int a=0;
+for(int i=0;i<f.length;i++)
+{
+try
+{
+sum+=Integer.parseInt(f[i]);
+a=1;
+}catch(Exception r)
+{
+if(sum>=0 && a==0)
+{
+}
+}
+}
+if(sum>=0 && a==1)
+{
+System.out.println(sum);
+}
+}
+}
+------------------------------------------------------------------
+5. random number
+
+class aaa
+{
+public static void random(int min,int max)
+{
+int random=0;
+while(min<max)
+{
+random=(int)(10.0*Math.random());
+System.out.println(random);
+min++;
+}
+
+}
+public static void main(String gg[])
+{
+aaa.random(1,10);
+}
+}
+------------------------------------------------------
+6. union(sabhi record)
+import java.util.*;
+class aaa
+{
+public static void main(String gg[])
+{
+Set<Object>a=new HashSet<Object>();
+a.add("Amit");
+a.add("Rahul");
+
+Set<Object>b=new HashSet<Object>();
+b.add("Amit");
+b.add("Durgesh");
+
+Set<Object> mutual=new TreeSet<Object>(a);
+mutual.addAll(b);
+System.out.println(mutual);
+}
+}
+-------------------------
+7. *Intersection (jo dono me common he)
+import java.util.*;
+class aaa
+{
+public static void main(String gg[])
+{
+Set<Object>a=new HashSet<Object>();
+a.add("Amit");
+a.add("Rahul");
+
+Set<Object>b=new HashSet<Object>();
+b.add("Amit");
+b.add("Durgesh");
+
+Set<Object> mutual=new TreeSet<Object>(a);
+mutual.retainAll(b);
+System.out.println(mutual);
+}
+}
+------------------------------------------------
+8. jin digits me 0 he uska sum
+
+class bbb
+{
+public static int sum(int x[])
+{
+int e=0;
+for(int i=0;i<x.length;i++)
+{
+if(x[i]%10==0)
+{
+e+=x[i];
+}
+}
+return e;
+}
+public static void main(String gg[])
+{
+int x[]={50,1,10,4,10,6};
+int s;
+s=bbb.sum(x);
+System.out.println(s);
+}
+}
+-----------------------------------------------------------------
+9. *kisi no k possible combination
+class bbb
+{
+public static int sum(int x[],int y)
+{
+int count=0;
+for(int i=0;i<x.length;i++)
+{
+for(int j=i+1;j<x.length;j++)
+{
+if(x[i]+x[j]==y)
+{
+count++;
+}
+}
+}
+return count;
+}
+public static void main(String gg[])
+{
+int x[]={3,4,6,1,5,2,7,9,0};
+int y=4;
+int z;
+z=bbb.sum(x,y);
+System.out.println(z);
+}
+}
+-----------------------------------------------------
+10. word or character count
+class bbb
+{
+public static int count(String g)
+{
+int c=0;
+g=g.replace(" ","");
+String f[]=g.split("");
+for(int i=0;i<f.length;i++)
+{
+c++;
+}
+return c;
+}
+public static void main(String gg[])
+{
+String g="I live In Ujjain";
+int x;
+x=bbb.count(g);
+System.out.println(x);
+}
+}
+----------------------------------
+11. *date diff
+import java.util.*;
+import java.text.SimpleDateFormat;
+class bbb
+{
+public static int day(String a,String b)
+{
+long diff=0;
+try
+{
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+Date d1=sdf.parse(a);
+Date d2=sdf.parse(b);
+diff=d2.getTime()-d1.getTime();
+diff=diff/(24*60*60*1000);
+}catch(Exception e)
+{
+System.out.println(e);
+}
+return (int)diff;
+}
+public static void main(String gg[])
+{
+String a="08/11/1992";
+String b="08/12/1993";
+int count;
+count=bbb.day(a,b);
+System.out.println(count);
+}
+}
+---------------------------------------
+12.*prime number
+class bbb
+{
+public static int[] prime(int x[])
+{
+int count=0;
+int y;
+int z;
+for(int i=0;i<x.length;i++)
+{
+y=2;
+z=0;
+while(y<=x[i]/2)
+{
+if(x[i]%y==0)
+{
+z=1;
+break;
+}
+y++;
+}
+if(z==0)
+{
+count++;
+}
+}
+int a[]=new int[count];
+int k=0;
+for(int i=0;i<x.length;i++)
+{
+z=0;
+y=2;
+while(y<=x[i]/2)
+{
+if(x[i]%y==0)
+{
+z=1;
+break;
+}
+y++;
+}
+if(z==0)
+{
+a[k]=x[i];
+k++;
+}
+}
+return a;
+}
+public static void main(String gg[])
+{
+int x[]={1,4,3,5,6,11};
+int b[]=bbb.prime(x);
+for(int i=0;i<b.length;i++)
+{
+System.out.println(b[i]);
+}
+}
+}
+-----------------------------------------------------
+13.*dectobin nd on bits position
+class DecToBin
+{
+public void bin(int number)
+{
+int binary[]=new int[32];
+int index=0;
+while(number!=0)
+{
+binary[index++]=number%2;
+number=number/2;
+}
+int k=0;
+int pos[]=new int[index];
+int onbits=0;
+for(int i=index;i>=0;i--)
+{
+System.out.println(binary[i]);
+if(binary[i]==1)
+{
+pos[k]=i;
+onbits++;
+k++;
+}
+}
+System.out.println("Onbits"+onbits);
+for(int i=0;i<k;i++)
+{
+System.out.println("Pos"+pos[i]);
+
+}
+}
+public static void main(String gg[])
+{
+DecToBin dtb=new DecToBin();
+dtb.bin(60);
+}
+}
+--------------------------------------------------------
+14. even odd
+class aaa
+{
+public static int[] even(int x[])
+{
+int count=0;
+for(int i=0;i<x.length;i++)
+{
+if(x[i]%2==0)
+{
+count++;
+}
+}
+int ev[]=new int[count];
+int j=0;
+for(int k=0;k<x.length;k++)
+{
+if(x[k]%2==0)
+{
+ev[j]=x[k];
+j++;
+}
+}
+return ev;
+}
+public static int[] od(int y[])
+{
+int count=0;
+for(int i=0;i<y.length;i++)
+{
+if(y[i]%2!=0)
+{
+count++;
+}
+}
+int odd[]=new int[count];
+int j=0;
+for(int k=0;k<y.length;k++)
+{
+if(y[k]%2!=0)
+{
+odd[j]=y[k];
+j++;
+}
+}
+return odd;
+}
+public static void main(String gg[])
+{
+int x[]={2,5,4,6,7,8,9};
+int m[]=aaa.even(x);
+int n[]=aaa.od(x);
+for(int i=0;i<m.length;i++)
+{
+System.out.println("even" +m[i]);
+}
+for(int j=0;j<n.length;j++)
+{
+System.out.println("odd" +n[j]);
+}
+
+}
+}
+---------------------------------------
+15.fac
+class aaa
+{
+public static void fac(int x)
+{
+int z;
+z=1;
+while(x<=5)
+{
+z=x*z;
+x++;
+System.out.println(z);
+}
+}
+public static void main(String gg[])
+{
+int x=1;
+aaa.fac(x);
+}
+}
+----------------
+16. *near to zero\
+import java.util.*;
+class aaa
+{
+public static int nearZero(int x[])
+{
+int p=0;
+int n=0;
+int z=0;
+int count=0;
+for(int i=0;i<x.length;i++)
+{
+if(x[i]>=0)
+{
+count++;
+p=1;
+}
+else
+{
+n=1;
+}
+}
+if(p==1 && n==1)
+{
+int k=0;
+int l=0;
+int pos[]=new int[count];
+int neg[]=new int[x.length-count];
+for(int i=0;i<x.length;i++)
+{
+if(x[i]>=0)
+{
+pos[k]=x[i];
+k++;
+}
+else
+{
+neg[l]=x[i];
+l++;
+}
+}
+Arrays.sort(pos);
+Arrays.sort(neg);
+int r=neg.length-1;
+z=pos[0]+neg[r];
+}
+if(p==1 && n==0)
+{
+int k=0;
+int pos[]=new int[count];
+for(int i=0;i<x.length;i++)
+{
+if(x[i]>=0)
+{
+pos[k]=x[i];
+k++;
+}
+}
+Arrays.sort(pos);
+z=pos[0]+pos[1];
+}
+if(n==1 && p==0)
+{
+int k=0;
+int neg[]=new int[x.length-count];
+for(int i=0;i<x.length;i++)
+{
+if(x[i]<0)
+{
+neg[k]=x[i];
+k++;
+}
+}
+Arrays.sort(neg);
+int y=neg.length-1;
+z=neg[y]+neg[y-1];
+}
+return z;
+}
+public static void main(String gg[])
+{
+int x[]={-4,-6,-2,-7,-1};
+int c=aaa.nearZero(x);
+System.out.println("Sum" +c);
+}
+}
+--------------------------------
+*17.total char
+class bbb
+{
+public static int count(String g,char f)
+{
+int c=0;
+g.replace(" ","");
+char cc[]=g.toCharArray();
+for(int i=0;i<cc.length;i++)
+{
+if(cc[i]==f)
+{
+c++;
+}
+}
+return c;
+}
+public static void main(String gg[])
+{
+String g="a b c d a v a";
+char f='a';
+int x;
+x=bbb.count(g,f);
+System.out.println(x);
+}
+}
+-------------------
+*18.number reverse
+class bbb
+{
+public static int pall(int x)
+{
+int b=0;
+while(x!=0)
+{
+b=b*10;
+b=b+x%10;
+x=x/10;
+}
+return b;
+}
+public static void main(String gg[])
+{
+int x=021;
+int a=bbb.pall(x);
+if(a==x)
+{
+System.out.println(a+ " pall");
+}
+else
+{
+System.out.println(a+ " not pall");
+
+}
+}
+}
+------------------------
+19.String reverse
+class bbb
+{
+public static void main(String gg[])
+{
+String g="hellooo";
+int j=g.length()-1;
+char a[]=new char[j+1];
+int i=0;
+while(j>=0)
+{
+a[i]=g.charAt(j);
+i++;
+j--;
+}
+System.out.println(a);
+}
+}
+---------------------------
+20.String comparison
+class bbb
+{
+public static void main(String gg[])
+{
+String a="Amita";
+String b="Rahul";
+int l1=a.length();
+int l2=b.length();
+if(l1!=l2)
+{
+System.out.println("not same");
+}
+if(l1==l2)
+{
+if(a.equals(b))
+{
+System.out.println("same");
+}
+else
+{
+System.out.println("not same");
+}
+}
+}
+}
+-----------------
+21.string cancate
+class bbb
+{
+public static void main(String gg[])
+{
+String a="Amita";
+String b="Rahul";
+int l1=a.length();
+int l2=b.length();
+System.out.println(l1);
+System.out.println(l2);
+int i=0;
+char c[]=new char[l1+l2+1];
+System.out.println(c.length);
+for(int j=0;j<l1;j++)
+{
+c[i]=a.charAt(j);
+i++;
+}
+c[i]=' ';
+i++;
+for(int k=0;k<l2;k++)
+{
+c[i]=b.charAt(k);
+i++;
+}
+
+System.out.println(c);
+}
+}
+------------------
+22.
